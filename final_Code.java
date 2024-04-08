@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.*; 
-class Parent{
+class BasicInputToAllClass{
 	long mobNumber;
 	String StatusOfBookIssuer;
 	String nameOfBookIssuer;
@@ -59,10 +59,8 @@ class Faculty{
 	void getIdNumber(String num){
 		this.IdNumber=num;
 	}
-	
-	
 	void displayNameOfFaculty(){
-		System.out.println("Name of Student-->       "+nameOfProfessor);
+		System.out.println("Name of Faculty-->       "+nameOfProfessor);
 	}
 	void displayIdNumber(){
 		System.out.println("Id Number of Faculty --> "+IdNumber);
@@ -78,8 +76,6 @@ class Student{
 	int yearOfStudent;
 	String addressOfStudent;
 	String resNumberOfStudent;
-	
-	
 	void getStudentName(String name){
 		this.nameOfStudent=name;
 	}
@@ -225,7 +221,7 @@ class LibraryStaff{
 	void displayBookNumber(){
 		System.out.println("BookNum is-->"+BookNumber);
 	}
-	void isBookIssued(Student s1,Parent p1,Book b1,Faculty f1){
+	void isBookIssued(Student s1,BasicInputToAllClass p1,Book b1,Faculty f1){
 		if(b1.isAvaiableBook(b1.booksList,b1.BookName)){	
 			String s=p1.displayStatusOfBookIssuer();
 			if(s.equals("faculty")){
@@ -263,7 +259,7 @@ class LibraryStaff{
 			 }
 		  }
 	}
-	String[] returnBook(Student s1,Parent p1,Book b1,String bookName){
+	String[] returnBook(Student s1,BasicInputToAllClass p1,Book b1,String bookName){
 		System.out.println("\nBook Returned  is ->:");
 		String[] arr=b1.booksList;
 		System.out.println(arr.length);
@@ -290,107 +286,72 @@ class printOtherMethod{
 	Book b1=new Book();
 	Faculty f1=new Faculty();
 	Student s1=new Student();
-	AccesOthers  A1=new AccesOthers();
+	//AccesOthers  A1=new AccesOthers();
 	LibraryStaff l1=new LibraryStaff();
-	Parent p1=new Parent();
-
-	void bookIssuedByStudent(){
-			Scanner sc=new Scanner(System.in);
-				p1.getStatusOfBookIssuer("student");
-							
-				System.out.println("Enter  name of Studnt     :");
-				String name1=sc.nextLine();
-				s1.getStudentName(name1);
-				
-				System.out.println("Enter registration number  :");
-				String regnum=sc.nextLine();
-				s1.getRegistrationNumber(regnum);
-				
-				System.out.println("Enter branch Of Student     :");
-				String branch=sc.nextLine();
-				
-				s1.getStudentBranch(branch);
-				
-				System.out.println("Enter year student           :");
-				int year=Integer.parseInt(sc.nextLine());
-				s1.getyearOfStudent(year);
-				
-				System.out.println("Enter Address of student      :");
-				String address=sc.nextLine();
-				s1.getAddressOfStudent(address);
-				
-				System.out.println("Enter mobile num       :");
-				long mobnum=Long.parseLong(sc.nextLine());
-				p1.getMobNumber(mobnum);
-				
-				System.out.println("Enetr books details");
-				
-				System.out.println("enter Book  number");
-				long booknum=Long.parseLong(sc.nextLine());
-				b1.getBookNumber(booknum);
-				
-				System.out.println("enter Book Name");
+	BasicInputToAllClass p1=new BasicInputToAllClass();
+	void EnterBookDetails(){
+		Scanner sc=new Scanner(System.in);
+				System.out.print("Enter Book Name->:");
 				String bookName=sc.nextLine();
 				b1.getBookName(bookName);
-				
-				System.out.println("enter Author of book");
+				System.out.print("Enter Author of book->:");
 				String bookAuthor=sc.nextLine();
 				b1.getAuthorName(bookAuthor);
-				
-				System.out.println("enter Book Publication ");
+				System.out.print("Enter Book Publication->: ");
 				long publictn=Long.parseLong(sc.nextLine());
 				b1.getPublication(publictn);
 				
-				System.out.println("enter Number of Pages In Book");
+				System.out.print("Enter Book Number->: ");
+				long bookNum=Long.parseLong(sc.nextLine());
+				b1.getBookNumber(bookNum);
+				System.out.print("Enter Number of Pages In Book->:");
 				long numOfPages=Long.parseLong(sc.nextLine());
 				b1.getNuberOfPages(numOfPages);
-				
-				System.out.println("enter Prize of Book");
+				System.out.print("Enter Price of Book->:");
 				long prizeOfBook=Long.parseLong(sc.nextLine());
 				b1.getPrizeOfBook(prizeOfBook);
-				//b1._Store_Book_After_Issue(b1.booksList,b1.BookName);
-											  System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+	}
+	void bookIssuedByStudent(){
+			Scanner sc=new Scanner(System.in);
+				p1.getStatusOfBookIssuer("student");
+				System.out.print("Enter  name of Student ->:");
+				String name1=sc.nextLine();
+				s1.getStudentName(name1);
+				System.out.print("Enter registration number->:");
+				String regnum=sc.nextLine();
+				s1.getRegistrationNumber(regnum);
+				System.out.print("Enter branch Of Student->:");
+				String branch=sc.nextLine();
+				s1.getStudentBranch(branch);
+				System.out.print("Enter year student ->:");
+				int year=Integer.parseInt(sc.nextLine());
+				s1.getyearOfStudent(year);
+				System.out.print("Enter Address of student ->:");
+				String address=sc.nextLine();
+				s1.getAddressOfStudent(address);
+				System.out.print("Enter mobile Number->:");
+				long mobnum=Long.parseLong(sc.nextLine());
+				p1.getMobNumber(mobnum);
+				EnterBookDetails();  System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 				System.out.println("Msg of BOOk Issue");
 				l1.isBookIssued(s1,p1,b1,f1);
 	}
 		void bookIssuedByFaculty(){
-			Scanner sc1=new Scanner(System.in);
+				Scanner sc1=new Scanner(System.in);
 				p1.getStatusOfBookIssuer("faculty");
-				
-				System.out.println("enter  name of faculty");
+				System.out.print("Enter  name of faculty->:");
 				String name2=sc1.nextLine();
 				f1.getNameFaculty(name2);
-				
-				System.out.println("enter mobile num");
-				long mobnumf=Long.parseLong(sc1.nextLine());
-				p1.getMobNumber(mobnumf);
-				
-				System.out.println("Enetr books details\n");
-				
-				System.out.println("enter Book  number");
-				long booknumf=Long.parseLong(sc1.nextLine());
-				b1.getBookNumber(booknumf);
-				
-				System.out.println("enter Book Name");
-				String bookNamef=sc1.nextLine();
-				b1.getBookName(bookNamef);
-				
-				System.out.println("enter Author of book");
-				String bookAuthorf=sc1.nextLine();
-				b1.getAuthorName(bookAuthorf);
-				
-				System.out.println("enter Book Publication ");
-				long publictnf=Long.parseLong(sc1.nextLine());
-				b1.getPublication(publictnf);
-				
-				System.out.println("enter Number of Pages In Book");
-				long numOfPagesf=Long.parseLong(sc1.nextLine());
-				b1.getNuberOfPages(numOfPagesf);
-				
-				System.out.println("enter Prize of Book");
-				long prizeOfBookf=Long.parseLong(sc1.nextLine());
-				b1.getPrizeOfBook(prizeOfBookf);
-				//b1._Store_Book_After_Issue(b1.booksList,b1.BookName);
+				System.out.print("Enter DepartMent Name of faculty->:");
+				String dept2=sc1.nextLine();
+				f1.getDeptName(dept2);
+				System.out.print("Enter Id of Faculty->:");
+				String idfaculty=sc1.nextLine();
+				f1.getIdNumber(idfaculty);
+				System.out.print("Enter Mobule  number of Faculty->:");
+				long mobNum=Long.parseLong(sc1.nextLine());
+				p1.getMobNumber(mobNum);
+				EnterBookDetails();
 System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 				System.out.println("Msg of BOOk Issue");
 				l1.isBookIssued(s1,p1,b1,f1);
@@ -400,31 +361,7 @@ System.out.println("\n\n--------------------------------------------------------
 				System.out.println("enter  Status of Book issuer");
 				String name1=sc2.nextLine();
 				p1.getStatusOfBookIssuer(name1);
-				
-				System.out.println("enter Book Name");
-				String bookName=sc2.nextLine();				
-				b1.getBookName(bookName);
-				
-				System.out.println("enter Book  number");
-			 	long booknumf=Long.parseLong(sc2.nextLine());
-				b1.getBookNumber(booknumf);
-			
-				System.out.println("enter Author of book");
-				String bookAuthorf=sc2.nextLine();
-				b1.getAuthorName(bookAuthorf);
-				
-				System.out.println("enter Book Publication ");
-				 long publictnf=Long.parseLong(sc2.nextLine());
-				b1.getPublication(publictnf);
-				
-				System.out.println("enter Number of Pages In Book");
-				long numOfPagesf=Long.parseLong(sc2.nextLine());
-				b1.getNuberOfPages(numOfPagesf);
-				
-				System.out.println("enter Prize of Book");
-				long prizeOfBookf=Long.parseLong(sc2.nextLine());
-				b1.getPrizeOfBook(prizeOfBookf);
-				
+				EnterBookDetails();
 				System.out.println("Msg of BOOK return");
 				l1.returnBook(s1,p1,b1,b1.BookName);
 		}
@@ -433,69 +370,34 @@ System.out.println("\n\n--------------------------------------------------------
 			System.out.println("enter  Status of Book issuer");
 				String name1=sc3.nextLine();
 				p1.getStatusOfBookIssuer(name1);
-				
-				System.out.println("enter Book Name");
-				String bookName=sc3.nextLine();				
-				b1.getBookName(bookName);
-				
-				System.out.println("enter Book  number");
-				long booknumf=Long.parseLong(sc3.nextLine());
-				b1.getBookNumber(booknumf);
-			
-				System.out.println("enter Author of book");
-				String bookAuthorf=sc3.nextLine();
-				b1.getAuthorName(bookAuthorf);
-				
-				System.out.println("enter Book Publication");
-				long publictnf=Long.parseLong(sc3.nextLine());
-				b1.getPublication(publictnf);
-				
-				System.out.println("enter Number of Pages In Book ");
-				long numOfPagesf=Long.parseLong(sc3.nextLine());
-				b1.getNuberOfPages(numOfPagesf);
-				
-				System.out.println("enter Prize of Book");
-				long prizeOfBookf=Long.parseLong(sc3.nextLine());
-				b1.getPrizeOfBook(prizeOfBookf);	System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+				EnterBookDetails();	System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 				System.out.println("Msg of Whether Book Is Available in Libray or Not :");
 				b1.isAvaiableBook(b1.booksList,b1.BookName);
 		}
 }
-
-class AccesOthers{
+class AccesOtherMethods{
 	public static void main(String args[]){
 		Scanner sc=new Scanner(System.in);
-		Book b1=new Book();
-		Faculty f1=new Faculty();
-		Student s1=new Student();
-		AccesOthers  A1=new AccesOthers();
-		LibraryStaff l1=new LibraryStaff();
-		Parent p1=new Parent();
 		printOtherMethod pr=new printOtherMethod();
-		//String choice="ReturnBook";
+		//1.String choice="ReturnBook";
 		String choice="IssueBookByStudent";
 		//String choice="IssueBookByfaculty";
-		//String choice="IsAvailableBook";
-		
+		//3.String choice="IsAvailableBook";
 		switch (choice){
 			case "IssueBookByStudent":
 				pr.bookIssuedByStudent();
 				break;
 			case "IssueBookByfaculty":
 			 	pr.bookIssuedByFaculty();
-				
 				break;
-				
 			case "ReturnBook":
 				pr.bookReturn();
 				break;
 			case "IsAvailableBook":
 				pr.isAvailabeBookMethod();
-				
 				break;
 			default:
 				System.out.println("Invalid choice");		
 		}
 	}
 }
-
